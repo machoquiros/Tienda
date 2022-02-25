@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <header th:replace="layout/plantilla :: header"></header>
         <!-- 
         <div>Saludos</div>
         <p th:text="${TextoSaludo}"></p>
@@ -51,17 +52,22 @@
                     <td>Apellidos</td>
                     <td>Correo</td>
                     <td>Telefono</td>
+                    <td>Modificar</td>
+                    <td>Eliminar</td>
                 </tr>
                 <tr th:each="item : ${clientesDB}">
                     <td th:text="${item.nombre}"></td>
                     <td th:text="${item.apellidos}"></td>
                     <td th:text="${item.correo}"></td>
                     <td th:text="${item.telefono}"></td>
+                    <td><a th:href="@{/modificarCliente/} + ${item.idcliente}">Modificar</a></td>
+                    <td><a th:href="@{/eliminarCliente/} + ${item.idcliente}">Eliminar</a></td>
                 </tr>
             </table>
         </div>
         <div th:if="${clientesDB == null or clientesDB.empty}">
             
         </div>
+        <footer th:replace="layout/plantilla :: footer"></footer>
     </body>
 </html>

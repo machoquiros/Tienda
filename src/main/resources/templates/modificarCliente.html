@@ -7,13 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <header th:replace="layout/plantilla :: header"></header>
+        
         <h2>Datos del Cliente</h2>
-        <br>
-        <a th:href="@{/}">Regresar</a>
-        <br><br>
+        
         <form th:action="@{/guardarCliente}" 
               method="post" 
               th:object="${cliente}">
+            <input type="hidden" name="idcliente" th:field="*{idcliente}">
             <label for="nombre">Nombre: </label>
             <input type="text" name="nombre" th:field="*{nombre}"/>
             <br><br>
@@ -28,5 +29,6 @@
             <br><br>
             <input type="submit" name="guardar" value="Guardar Registro"/>
         </form>
+        <footer th:replace="layout/plantilla :: footer"></footer>
     </body>
 </html>
