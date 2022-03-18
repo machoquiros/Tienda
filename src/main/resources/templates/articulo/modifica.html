@@ -18,7 +18,7 @@
                 <input type="hidden" name="idArticulo" th:field="*{idArticulo}">
                 <label for="categoria">Categoria: </label>
                 <select th:field="*{idCategoria}">
-                    <option th:each="*{item : ${categorias}}" 
+                    <option th:each="item : ${categorias}" 
                             th:value="${item.idCategoria}"
                             th:text="${item.descripcion}"
                             />
