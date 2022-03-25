@@ -10,20 +10,20 @@
         <header th:replace="layout/plantilla :: header"></header>
 
         <div class="contenido">
-            <h2>Listado de Clientes</h2>
+            <h2 th:text="#{cliente.titulo}">Listado de Clientes</h2>
             <br>
-            <a th:href="@{/cliente/nuevo}">Nuevo Cliente</a>
+            <a th:href="@{/cliente/nuevo}" th:text="#{cliente.nuevo}" >Nuevo Cliente</a>
             <br>
             <div th:if="${clientes != null and !clientes.empty}">
                 <table border="1">
                     <tr>
-                        <td>Nombre</td>
-                        <td>Apellidos</td>
-                        <td>Correo</td>
-                        <td>Telefono</td>
-                        <td>Limite</td>
-                        <td>Modificar</td>
-                        <td>Eliminar</td>
+                        <td th:text="#{cliente.nombre}">Nombre</td>
+                        <td th:text="#{cliente.apellidos}">Apellidos</td>
+                        <td th:text="#{cliente.correo}">Correo</td>
+                        <td th:text="#{cliente.telefono}">Telefono</td>
+                        <td th:text="#{cliente.limite}">Limite</td>
+                        <td th:text="#{accion.actualizar}">Modificar</td>
+                        <td th:text="#{accion.eliminar}">Eliminar</td>
                     </tr>
                     <tr th:each="item : ${clientes}">
                         <td th:text="${item.nombre}"></td>
@@ -37,7 +37,7 @@
                 </table>
             </div>
             <div th:if="${clientes == null or clientes.empty}">
-                No tenemos clientes para mostar
+                <p th:text="#{cliente.no_mostrar}">No tenemos clientes para mostar</p>
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>

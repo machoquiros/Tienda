@@ -9,13 +9,14 @@
     <body>
         <header th:replace="layout/plantilla :: header"></header>
         <div class="contenido">
-            <h2>Nuestros Articulos</h2>
+            <h2 th:text="#{index.titulo}">Nuestros Articulos</h2>
             <br>
             <div th:if="${articulos != null and !articulos.empty}">
                 <table border="1">
                     <tr>
-                        <td>Descripcion</td>
-                        <td>Precio</td>
+                        <td th:text="#{articulo.descripcion}">Descripcion</td>
+                        <td th:text="#{articulo.precio}">Precio</td>
+                        <td th:text="#{articulo.comprar}">Comprar</td>
                     </tr>
                     <tr th:each="item : ${articulos}">
                         <td th:text="${item.descripcion}"></td>
@@ -25,7 +26,7 @@
                 </table>
             </div>
             <div th:if="${articulos == null or articulos.empty}">
-                No tenemos articulos para mostrar
+                <p th:text="#{index.articulo.no_mostrar}">No tenemos articulos para mostrar</p>
             </div>
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>
