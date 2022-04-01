@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head>
         <title>Template</title>
         <meta charset="UTF-8">
@@ -10,7 +11,7 @@
         <header th:fragment="header"class="header">
             <nav class="nav">
                 <a th:href="@{/}" class="nav-link logo">Tech Shop</a>
-                <ul class="nav-menu">
+                <ul class="nav-menu" sec:authorize="hasRole('ROLE_VENDEDOR')">
                     <li class="nav-menu-item">
                         <a th:href="@{/cliente/listado}" class="nav-menu-link nav-link"
                            th:text="#{plantilla.clientes}">Clientes</a>
@@ -23,15 +24,27 @@
                         <a th:href="@{/categoria/listado}" class="nav-menu-link nav-link"
                            th:text="#{plantilla.categorias}">Categoria</a>
                     </li>
+                    <li class="nav-menu-item">
+                        <a th:href="@{/admin/listado}" class="nav-menu-link nav-link"
+                           th:text="#{plantilla.admin}" sec:authorize="hasRole('ROLE_ADMIN')">Admin</a>
+                    </li>
 
                 </ul>
             </nav>
         </header>
 
         <footer th:fragment="footer" class="footer">
-            <p>&copy; [[#{plantilla.derechos}]]
+            <div>&copy; [[#{plantilla.derechos}]]
                 <a th:href="@{/(lang=es)}">ES</a>
-                <a th:href="@{/(lang=en)}">EN</a></p>
+                <a th:href="@{/(lang=en)}">EN</a>
+                
+                User: <span sec:authentication='name'>text</span> |
+                Roles: <span sec:authentication='principal.authorities'>text</span> |
+
+                <form method="POST" th:action="@{/logout}" style="display: inline;">
+                    <a href="#" onclick="this.parentNode.submit();">Logout</a>
+                </form>
+            </div>
         </footer>
     </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://thymeleaf.org/extras/spring-security">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
@@ -21,8 +22,8 @@
                         <td>Precio</td>
                         <td>Existencias</td>
                         <td>Activo</td>
-                        <td>Modificar</td>
-                        <td>Eliminar</td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">Modificar</td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</td>
 
                     </tr>
                     <tr th:each="item : ${articulos}">
@@ -30,8 +31,8 @@
                         <td th:text="${#numbers.formatDecimal(item.precio,3,2)}"></td>
                         <td th:text="${item.existencias}"></td>
                         <td><input type="checkbox" name="activo" th:checked="${item.activo}" disabled="true"></td>
-                        <td><a th:href="@{/articulo/modificar/} + ${item.idArticulo}">Modificar</a></td>
-                        <td><a th:href="@{/articulo/eliminar/} + ${item.idArticulo}">Eliminar</a></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/articulo/modificar/} + ${item.idArticulo}">Modificar</a></td>
+                        <td sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/articulo/eliminar/} + ${item.idArticulo}">Eliminar</a></td>
                     </tr>
                 </table>
             </div>
