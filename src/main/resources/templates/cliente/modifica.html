@@ -1,11 +1,22 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head">
+        <title>TechShop</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header" />
+        <section th:replace="cliente/fragmentosCliente :: editarCliente"/> 
+        <footer th:replace="layout/plantilla :: footer" />
+    </body>
+</html>
+
+<!--<!DOCTYPE html>
 
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Nuevo Cliente</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+  <head th:replace="layout/plantilla :: head">
+        <title>Modifica</title>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
@@ -38,3 +49,4 @@
         <footer th:replace="layout/plantilla :: footer"></footer>
     </body>
 </html>
+-->

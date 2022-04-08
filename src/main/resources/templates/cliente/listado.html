@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://thymeleaf.org/extras/spring-security">
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    <head th:replace="layout/plantilla :: head">
+        <title>Listado</title>
     </head>
     <body>
+  <!--      
         <header th:replace="layout/plantilla :: header"></header>
 
         <div class="contenido">
@@ -41,6 +39,13 @@
                 <p th:text="#{cliente.no_mostrar}">No tenemos clientes para mostar</p>
             </div>
         </div>
-        <footer th:replace="layout/plantilla :: footer"></footer>
+        <footer th:replace="layout/plantilla :: footer"></footer>-->
+        <header th:replace="layout/plantilla :: header" />
+
+        <section th:replace="cliente/fragmentosCliente :: botonesAgregar"/>
+        <section th:replace="cliente/fragmentosCliente :: agregarCliente"/>
+        <section th:replace="cliente/fragmentosCliente :: listadoClientes"/>
+
+        <footer th:replace="layout/plantilla :: footer" />
     </body>
 </html>
